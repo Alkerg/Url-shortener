@@ -18,7 +18,7 @@ from routes.url import router as url_router
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.requests import Request
 from core.settings import BASE_URL
-
+import os
 
 load_dotenv()
 
@@ -135,5 +135,6 @@ if __name__ == "__main__":
     """
     if cli():
         sys.exit(0)
-
-    uvicorn.run("app:app", host=HOST, port=PORT, reload=True)
+    print("BASE_URL:" + BASE_URL)
+    port = int(os.getenv("PORT", PORT))  
+    uvicorn.run("app:app", host="0.0.0.0", port=port)
