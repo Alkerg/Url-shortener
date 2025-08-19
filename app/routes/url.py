@@ -10,6 +10,7 @@ from services.shorter_url import get_by_shorter_url, insert_shorter_url
 from services.shorter_url import increment_visits_url, build_url_entity
 from services.auth import verify_token
 from pathlib import Path
+from core.settings import BASE_URL
 
 router = APIRouter()
 
@@ -39,7 +40,7 @@ async def generated_url(
 
     url_shorter = build_url_entity(original_url=url, username=username)
 
-    shortened_url = f"http://{HOST}:{PORT}/{url_shorter.shorter}"
+    shortened_url = f"{BASE_URL}/{url_shorter.shorter}"
 
     # Aqui se almacena en la base de datos
 

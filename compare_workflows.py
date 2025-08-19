@@ -4,7 +4,7 @@ import os
 # Repositorios que queremos comparar
 repos = {
     "Git Flow": "url-shortener-git-flow",
-    "Trunk-Based": "url-shortener-trunk-based-1"
+    "Trunk-Based": "url-shortener-trunk-based"
 }
 
 # Archivo donde se guardará el reporte
