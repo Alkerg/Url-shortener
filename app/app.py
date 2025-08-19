@@ -17,6 +17,7 @@ from core.settings import HOST, PORT
 from routes.url import router as url_router
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.requests import Request
+from core.settings import BASE_URL
 
 
 load_dotenv()
@@ -86,7 +87,7 @@ async def dashboard(request: Request, db: Session = Depends(get_db)):
 
     username = payload.get("username")
     username_urls = get_urls_by_username(db, username)
-    domain_url = f"http://{HOST}:{PORT}/"
+    domain_url = f"{BASE_URL}/"
 
     return templates.TemplateResponse('dash.html', {
         "request": request,
