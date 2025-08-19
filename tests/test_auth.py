@@ -47,14 +47,12 @@ def test_create_access_token(user_data, secret_key, algorithm):
     token = auth.create_access_token(email=user_data["email"],
                                      username=user_data["username"])
     payload = jwt.decode(token, secret_key, algorithms=[algorithm])
-
-    assert payload["email"] == user_data["email"]
-    assert payload["username"] == user_data["username"]
-    assert "exp" in payload
-
     expires_at = datetime.fromtimestamp(payload["exp"])
     now = datetime.utcnow()
     delta = expires_at - now
+    
+    assert payload["email"] == user_data["email"]
+    assert payload["username"] == user_data["username"]
     assert timedelta(days=29) < delta <= timedelta(days=30)
 
 
