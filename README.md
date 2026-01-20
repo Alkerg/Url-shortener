@@ -1,4 +1,4 @@
-# PC3-PROYECTO-11
+# URL Shortener
 
 Para ejecutar el proyecto se necesitan ejecutar los siguientes comandos
 
